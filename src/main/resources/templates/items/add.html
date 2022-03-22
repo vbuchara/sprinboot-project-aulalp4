@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring Project - Add Items</title>
+
+    <link rel="stylesheet" href="/styles/items.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+    <main class="container">
+        <h1>Items - Add</h1>
+        <form 
+            th:action="@{/items/add}"
+            th:object="${item}"
+            method="post"
+        >
+            <div class="input-field">
+                <label for="name">Name</label>
+                <input type="text" th:field="*{name}" /><br/>
+                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span><br/>
+            </div>
+
+            <div class="input-field">
+                <label for="description">Description</label>
+                <input type="text" th:field="*{description}" />
+                <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span><br/>
+            </div>
+            
+            <div class="input-field pool-field">
+                <select id="pool" th:field="*{pool}">
+                    <option 
+                        th:each="pools : ${pools}"
+                        th:value="${pools.name}" 
+                        th:text="${pools}"
+                    ></option>
+                </select>
+                <span th:if="${#fields.hasErrors('pool')}" th:errors="*{pool}"></span><br/>
+            </div>
+
+            <div class="input-field">
+                <label for="quality">Quality</label>
+                <input type="number" th:field="*{quality}" min="0" max="6"/>
+                <span th:if="${#fields.hasErrors('quality')}" th:errors="*{quality}"></span><br/>
+            </div>
+
+            <div class="input-field">
+                <label for="charges">Charges</label>
+                <input type="number" th:field="*{charges}" min="0" max="6"/>
+                <span th:if="${#fields.hasErrors('charges')}" th:errors="*{charges}"></span><br/> 
+            </div>
+
+            <div class="input-field">
+                <label for="stars">Stars</label>
+                <input type="number" th:field="*{stars}" step="0.1" min="0" max="5" />
+                <span th:if="${#fields.hasErrors('stars')}" th:errors="*{stars}"></span><br/>   
+            </div>
+            <div class="center-align">
+                <button 
+                    class="btn red darken-2 center-align btn-submit"
+                    type="submit"
+                >
+                    Submit
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <script src="/javascript/index.js"></script>
+</body>
+</html>

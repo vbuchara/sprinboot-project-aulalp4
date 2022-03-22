@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/items.css">
+    <title>Spring Project - List Items</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+    <main class="container">
+        <h1>Items</h1>
+        <a href="/items/add" class="btn red darken-2">
+            Add Item
+        </a>
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>description</th>
+                    <th>pool</th>
+                    <th>quality</th>
+                    <th>charges</th>
+                    <th>stars</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="item, key : ${items}">
+                    <td th:text="${item.id}"></td>
+                    <td th:text="${item.name}"></td>
+                    <td th:text="${item.description}"></td>
+                    <td th:text="${item.pool}"></td>
+                    <td th:text="${item.quality}"></td>
+                    <td th:text="${item.charges}"></td>
+                    <td th:text="${item.stars}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
