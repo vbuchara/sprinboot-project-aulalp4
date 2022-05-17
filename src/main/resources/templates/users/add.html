@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <head th:insert="components/header :: header"></head>
+
+    <link rel="stylesheet" href="/styles/users.css">
+    <title>Spring Project - Add Users</title>
+</head>
+<body>
+    <body th:insert="components/header :: navbar"></body>
+    <main class="container">
+        <h1>Users - Add</h1>
+        <form 
+            th:action="@{/users/add}"
+            th:object="${user}"
+            method="post"
+        >
+            <div class="input-field">
+                <label for="name">Name</label>
+                <input
+                    id="name"
+                    class="red-input"
+                    type="text"
+                    th:field="*{name}"
+                />
+                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+            </div>
+
+            <div class="input-field">
+                <label for="cpf">CPF</label>
+                <input
+                    id="cpf"
+                    class="red-input"
+                    type="text"
+                    th:field="*{cpf}"
+                />
+                <span th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}"></span>
+            </div>
+
+            <div class="input-field red-datepicker">
+                <label for="birthDate">Birth Date</label>
+                <input
+                    id="birthdate"
+                    type="text"
+                    class="datepicker red-input"
+                    th:field="*{birthDate}"
+                />
+                <span th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}"></span>
+            </div>
+
+            <div class="input-field">
+                <label for="email">Email</label>
+                <input
+                    id="email"
+                    class="red-input"
+                    type="email"
+                    th:field="*{email}"
+                />
+                <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span> 
+            </div>
+
+            <div class="input-field">
+                <label for="password">Password</label>
+                <input id="password" class="red-input" type="password" th:field="*{password}" />
+                <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>   
+            </div>
+
+            <div class="input-field">
+                <label for="pontos">Points</label>
+                <input id="pontos" class="red-input" type="number" th:field="*{pontos}" step="0.1" min="0" max="5" />
+                <span th:if="${#fields.hasErrors('pontos')}" th:errors="*{pontos}"></span>  
+            </div>
+
+            <div class="input-field">
+                <label class="roles-label">Roles</label>
+                <p th:each="role, iter : ${roles}">
+                    <label th:attr="for=${role.role}">
+                        <input 
+                            th:attr="id=${role.role}" 
+                            class="filled-in red-input" 
+                            type="checkbox" 
+                            th:value="${role.id}"
+                            name="roles"
+                        >
+                        <span th:text="${role.role}"></span>
+                    </label>
+                </p>
+            </div>
+
+            <div class="center-align submit-field">
+                <a href="/users" class="btn grey btn-back">
+                    Back
+                </a>
+                <button 
+                    class="btn red darken-2 btn-submit"
+                    type="submit"
+                >
+                    Submit
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <body th:insert="components/footer :: footer"></body>
+    <script src="/javascript/users.js"></script>
+</body>
+</html>

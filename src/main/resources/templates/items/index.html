@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/items.css">
+    <head th:insert="components/header :: header"></head>
+    <link rel="stylesheet" href="/styles/items.css">
     <title>Spring Project - List Items</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
+    <body th:insert="components/header :: navbar"></body>
     <main class="container">
         <h1>Items</h1>
         <a href="/items/add" class="btn red darken-2">
@@ -26,6 +22,7 @@
                     <th>quality</th>
                     <th>charges</th>
                     <th>stars</th>
+                    <th>actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,9 +34,40 @@
                     <td th:text="${item.quality}"></td>
                     <td th:text="${item.charges}"></td>
                     <td th:text="${item.stars}"></td>
+                    <td class="td-actions">
+                        <div class="table-actions">
+                            <a
+                                th:href="@{'/items/'+${item.id}}"
+                                class="btn green darken-1"
+                            >
+                                Edit
+                            </a>
+                            <button 
+                                class="btn red accent-4 item-delete"
+                                th:attr="data-id=${item.id}"
+                            >
+                                Delete
+                            </button>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>
+        <a href="/" class="btn grey btn-back">
+            Back
+        </a>
+        <div id="modal1" class="modal modal-fixed-footer">
+            <div class="modal-content">
+              <h4>Modal Header</h4>
+              <p>A bunch of text</p>
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+          </div>
     </main>
+    
+    <script src="/javascript/items.js"></script>
+    <body th:insert="components/footer :: footer"></body>
 </body>
 </html>

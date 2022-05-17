@@ -4,14 +4,18 @@
     <head th:insert="components/header :: header"></head>
     <link rel="stylesheet" href="/styles/items.css">
 
-    <title>Spring Project - Add Items</title>
+    <title>Spring Project - Edit Items</title>
 </head>
 <body>
     <body th:insert="components/header :: navbar"></body>
     <main class="container">
-        <h1>Items - Add</h1>
+        <h1 class="edit-title">
+            Items - Edit 
+            <span th:text='${item.name + " - " + item.id}'></span>
+        </h1>
         <form 
-            th:action="@{/items/add}"
+            id="form-edit"
+            th:attr="action=${'/items/' + item.id}"
             th:object="${item}"
             method="post"
         >

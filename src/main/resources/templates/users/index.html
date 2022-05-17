@@ -1,37 +1,77 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/items.css">
-    <title>Spring Project - List Users</title>
+    <head th:insert="components/header :: header"></head>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <title>Spring Project - List Users</title>
 </head>
 <body>
+    <body th:insert="components/header :: navbar"></body>
     <main class="container">
         <h1>Users</h1>
-        <a href="/items/add" class="btn red darken-2">
+        <a href="/users/add" class="btn red darken-2">
             Add User
         </a>
         <table>
             <thead>
                 <tr>
-                    <th>id</th>
-                    <th>name</th>
+                    <th>ID</th>
+                    <th>Name</th>
                     <th>CPF</th>
+                    <th>Birth Date</th>
+                    <th>Email</th>
+                    <th>Points</th>
+                    <th>Roles</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="user, key : ${user}">
-                    <td th:text="${user.id}"></td>
+                <tr th:each="user, key : ${users}">
+                    <td data-id th:text="${user.id}"></td>
                     <td th:text="${user.name}"></td>
                     <td th:text="${user.cpf}"></td>
+                    <td th:text="${user.getFormattedDate()}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td th:text="${user.pontos}"></td>
+                    <td class="td-roles">
+                        <div class="user-roles">
+                            <span 
+                                th:each="role, key : ${user.roles}" 
+                                th:class="${
+                                    role.role.equalsIgnoreCase('admin') ? 'yellow darken-2 reverse' :
+                                    role.role.equalsIgnoreCase('user') ? 'light-blue darken-1 reverse' :
+                                    ''
+                                }"
+                                th:text="${role.role}"
+                            >
+                            </span>
+                        </div>
+                    </td>
+                    <td class="td-actions">
+                        <div class="table-actions">
+                            <a
+                                th:href="@{'/users/'+${user.id}}"
+                                class="btn green darken-1"
+                            >
+                                Edit
+                            </a>
+                            <button 
+                                class="btn red accent-4 user-delete"
+                                th:attr="data-id=${user.id}"
+                            >
+                                Delete
+                            </button>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>
+        <a href="/" class="btn grey btn-back">
+            Back
+        </a>
     </main>
+
+    <body th:insert="components/footer :: footer"></body>
+    <script src="/javascript/users.js"></script>
 </body>
 </html>

@@ -1,0 +1,161 @@
+:root{
+    --red-darken-1: #F44336;
+    --red-accent-4: #D50000;
+
+    --white: #fff;
+
+    --yellow-darken-2: #fbc02d;
+
+    --light-blue-darken-1: #039be5;
+
+    --green-darken-1: #43A047;
+    --green-accent-4: #00c853;
+}
+
+nav.navbar {
+    position: sticky;
+    top: 0;
+
+    z-index: 1;
+}
+
+nav .nav-wrapper {
+    display: flex;
+    align-items: center;
+    padding-right: 3rem;
+}
+
+nav .brand-logo.nav-logo {
+    position: relative;
+    font-size: 1.5rem;
+    padding-inline: 0.5rem;
+}
+
+.logout-button {
+    color: var(--red-darken-1);
+    font-weight: bold;
+    border-color: var(--red-darken-1);
+
+    margin-left: 1rem;
+}
+
+.user-avatar {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    margin-left: auto;
+}
+
+.user-avatar > h2 {
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+main {
+    padding-bottom: 3rem;
+}
+
+.btn-back {
+    margin-top: 1rem;
+}
+
+.input-field > .red-input:focus {
+    border-bottom: 1px solid var(--red-darken-1) !important;
+    box-shadow: 0 1px 0 0 var(--red-darken-1) !important;
+}
+
+[type="checkbox"].filled-in.red-input:checked+span:not(.lever):after {
+    background-color: var(--red-darken-1);
+    border-color: var(--red-darken-1);
+}
+
+.red-select .select-wrapper input.select-dropdown:focus {
+    border-bottom: 1px solid var(--red-darken-1) !important;
+}
+
+.red-select .select-wrapper .dropdown-content li > span {
+    color: var(--red-darken-1);
+}
+
+.red-datepicker .datepicker-date-display {
+    background-color: var(--red-darken-1);
+}
+
+.red-datepicker :is(.datepicker-cancel, .datepicker-clear, .datepicker-today, .datepicker-done) {
+    color: var(--red-darken-1);
+}
+
+.user-roles, .table-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.user-roles > span {
+    cursor: default;
+}
+
+.yellow.darken-2.reverse {
+    background-color: var(--white) !important;
+    color: var(--yellow-darken-2);
+    font-weight: bold;
+}
+
+.light-blue.darken-1.reverse{
+    background-color: var(--white) !important;
+    color: var(--light-blue-darken-1);
+    font-weight: bold;
+}
+
+.input-field > span {
+    color: var(--red-darken-1);
+    font-weight: bold;
+}
+
+.submit-field > .btn-back {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.btn-submit {
+    margin-bottom: 1rem;
+}
+
+.toast-container-msg {
+    display: none;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.toast-msg {
+    -webkit-box-shadow: 0px 0px 17px 5px rgba(0,0,0,0.7); 
+    box-shadow: 0px 0px 17px 5px rgba(0,0,0,0.7);
+}
+
+.toast-msg > span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.toast-msg.error-msg {
+    background-color: var(--red-accent-4);
+    color: var(--white);
+}
+
+.toast-msg.error-msg > .toast-action {
+    color: var(--white);
+    font-weight: bold;
+}
+
+.toast-msg.success-msg {
+    background-color: var(--green-accent-4);
+    color: var(--white);
+}
+
+.toast-msg.success-msg > .toast-action {
+    color: var(--white);
+    font-weight: bold;
+}

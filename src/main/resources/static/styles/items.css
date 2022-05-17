@@ -1,7 +1,16 @@
-.btn-submit {
-    margin-bottom: 1rem;
-}
-
 .pool-field > label {
     position: relative !important;
+}
+
+.edit-title{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.edit-title > span {
+    color: var(--red-darken-1);
+    font-size: 3rem;
+
+    margin-left: 1rem;
 }

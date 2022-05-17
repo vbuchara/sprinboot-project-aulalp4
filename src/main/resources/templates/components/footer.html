@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <body th:fragment="footer">
+            <div 
+                id="toast-container"
+                class="toast-container-msg"
+                th:attr="data-class=${'toast-msg ' + toastClass}"
+            >
+                <span>
+                    <i 
+                        class="material-icons" 
+                        th:text="${ toastIcon != null ? toastIcon : '' }"
+                    ></i>
+                    <th:block th:text="${toastMsg}"></th:block>
+                </span>
+                <button 
+                    id="toast-action-ok"
+                    class="btn-flat toast-action"
+                >OK</button>
+            </div>
+        <script src="/javascript/index.js"></script>
+    </body>
+</html>

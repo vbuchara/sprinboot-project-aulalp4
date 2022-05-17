@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment="header">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="/styles/global.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </head>
+    <nav class="navbar" th:fragment="navbar">
+        <div class="nav-wrapper red darken-2">
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul id="nav-mobile" class="hide-on-med-and-down">
+                <li><a href="/" class="brand-logo nav-logo">TBOI Items</a></li>
+                <li><a href="/items">Items</a></li>
+                <li><a href="/users">Users</a></li>
+            </ul>
+            <ul id="mobile-demo" class="sidenav">
+                <li><a href="/" class="nav-logo">TBOI Items</a></li>
+                <li><a href="/items">Items</a></li>
+                <li><a href="/users">Users</a></li>
+            </ul>
+            <div class="user-avatar">
+                <th:block th:if="${userLogged != null}">
+                    <i class="large material-icons">account_box</i>
+                    <h2 th:text="${userLogged.name}"></h2>
+                </th:block>
+            </div>
+            <button id="logout-button" class="btn white logout-button">
+                Logout
+            </button>
+        </div>
+    </nav>
+</html>
